@@ -49,6 +49,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.DefaultCaret;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 import org.apache.commons.io.FileUtils;
@@ -84,7 +85,7 @@ public class APKRepatcher implements Runnable {
 	JLabel memLabel;
 	String filePath = null;
 	JFrame frame = null;
-	String currVersion = "1.1.0";
+	String currVersion = "1.1.1";
 	String title = "APKRepatcher by csanuragjain (https://cooltrickshome.blogspot.com)";
 	String howToUseURL = "https://cooltrickshome.blogspot.com/2017/03/apkrepatcher-now-decompile-recompile.html";
 	String gitURL = "https://github.com/csanuragjain/APKRepatcher/releases";
@@ -109,33 +110,33 @@ public class APKRepatcher implements Runnable {
 		settings.add(memory);
 		JMenuItem open = new JMenuItem("Open APK");
 		open.setAccelerator(KeyStroke.getKeyStroke('O', Toolkit
-				.getDefaultToolkit().getMenuShortcutKeyMask()));
+				.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 		file.add(open);
 		file.addSeparator();
 		JMenuItem openProj = new JMenuItem("Open Project");
 		openProj.setAccelerator(KeyStroke.getKeyStroke('P', Toolkit
-				.getDefaultToolkit().getMenuShortcutKeyMask()));
+				.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 		file.add(openProj);
 		file.addSeparator();
 		JMenuItem save = new JMenuItem("Compile & Save", KeyEvent.VK_S);
 		save.setAccelerator(KeyStroke.getKeyStroke('S', Toolkit
-				.getDefaultToolkit().getMenuShortcutKeyMask()));
+				.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 		file.add(save);
 		file.addSeparator();
 		JMenuItem build = new JMenuItem("Build Apk");
 		build.setAccelerator(KeyStroke.getKeyStroke('B', Toolkit
-				.getDefaultToolkit().getMenuShortcutKeyMask()));
+				.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 		file.add(build);
 		// findDialog = new FindDialog(this, this);
 		// edit.add(new JMenuItem(new ShowFindDialogAction()));
 		JMenuItem incFont = new JMenuItem("Increase Code Fontsize");
 		incFont.setAccelerator(KeyStroke.getKeyStroke('I', Toolkit
-				.getDefaultToolkit().getMenuShortcutKeyMask()));
+				.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 		edit.add(incFont);
 		edit.addSeparator();
 		JMenuItem decFont = new JMenuItem("Decrease Code Fontsize");
 		decFont.setAccelerator(KeyStroke.getKeyStroke('D', Toolkit
-				.getDefaultToolkit().getMenuShortcutKeyMask()));
+				.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 		edit.add(decFont);
 		edit.addSeparator();
 		JMenuItem removeAllTab = new JMenuItem("Remove all tabs");
@@ -1758,6 +1759,8 @@ public class APKRepatcher implements Runnable {
 			}
 		});
 		tabPane = new ClosableTabbedPane() {
+			private static final long serialVersionUID = 1L;
+
 			public boolean tabAboutToClose(int tabIndex) {
 				// int currSel=currentTabIndex;
 				if (tabIndex == previousTabIndex) {
@@ -1957,11 +1960,9 @@ public class APKRepatcher implements Runnable {
 				// TODO Auto-generated method stub
 				try {
 					ConsoleViewer.cleanConsole();
-					@SuppressWarnings("unchecked")
-					Enumeration<DefaultMutableTreeNode> e = root
-							.depthFirstEnumeration();
+					Enumeration<TreeNode> e = root.depthFirstEnumeration();
 					while (e.hasMoreElements()) {
-						DefaultMutableTreeNode node = e.nextElement();
+						DefaultMutableTreeNode node = (DefaultMutableTreeNode) e.nextElement();
 						if (node.toString().toLowerCase()
 								.contains(searchClass.toLowerCase())) {
 							TreePath path = new TreePath(node.getPath());
@@ -2163,9 +2164,12 @@ public class APKRepatcher implements Runnable {
 		@Override
 		public void run() {
 			createChildren(fileRoot, root);
-			DefaultMutableTreeNode currentNode = root.getNextNode();
-			if (currentNode.getLevel() == 1)
-				tree.expandPath(new TreePath(currentNode.getPath()));
+			DefaultMutableTreeNode currentNode = (DefaultMutableTreeNode) root.getNextNode();
+			if (currentNode.getLevel() != 0) {
+				if (currentNode.getLevel() == 1) {
+					tree.expandPath(new TreePath(currentNode.getPath()));
+				}
+			}
 		}
 
 		private void createChildren(File fileRoot, DefaultMutableTreeNode node) {

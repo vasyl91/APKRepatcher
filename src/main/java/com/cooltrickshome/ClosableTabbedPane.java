@@ -18,6 +18,7 @@ import javax.swing.*;
  * 
  */
 public class ClosableTabbedPane extends JTabbedPane {
+	private static final long serialVersionUID = -1311180813748465009L;
 	private TabCloseUI closeUI = new TabCloseUI(this);
 
 	public void paint(Graphics g) {

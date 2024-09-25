@@ -1,25 +1,21 @@
 # APKRepatcher
 
-APKRepatcher helps you to modify an existing apk using a simple user friendly GUI. It lets you edit java/smali code from an APK and rewrite the changes back to the modified signed APK. Additionally, it provides you option to convert Dex, Jar, Class, Smali, Class from one format to another.
-
-If you like this project, feel free to paypal me at cs.anurag.jain@gmail.com :)
+Updated [fork](https://www.youtube.com/watch?v=H3tnNVyCJfk) by cs.anurag.jain@gmail.com
+I updated it probably only once for single purpose, therefore if you want any further updates, please pick your own fork.
 
 # Website (Full Doc/Tutorial/Screenshot):
 https://cooltrickshome.blogspot.in/2017/03/apkrepatcher-now-decompile-recompile.html
 
-# Features:
-Decompiles/Recompiles the APK. <br/>
-Provides an editor to change the decompiled java code. <br/>
-Compiles the code using javac and saves the updated class. <br/>
-Allows you to view smali version of your modified java code. <br/>
-Allows you to edit smali from the original apk or from your modified java code. <br/>
-Smali changes once saved would be reflected back in updated apk after building project. <br/>
-Build features re-creates new apk with all code changes and lastly it would resign the apk. <br/>
-Basic features like find/replace/increase or decrease font are also provided. <br/>
-It also allows you to convert from Dex to Jar/Class/Smali/Java, Jar to Dex/Java, Class to Dex/Smali, Smali to Class/Java/Dex. Also allows to extract and sign any apk. <br/>
-Patch Module using Advanced Section (explained on website) <br/>
-APKRepatcher is created using Java with no os dependency (as far as i think) so you can run it with various OS <br/>
-Allows you to change the amount of memory utilized by APKRepatcher. <br/>
-100% Free 
+# How to create APKRepatcher.jar in case someone wants to update it in the future
 
-Please let me know your valuable feedbacks or if you would like to contribute at cs.anurag.jain@gmail.com :)
+1. Download and unpack or clone this repository.
+2. Remove `APKRepatcher_lib` and `Projects` folders from directory `APKRepatcher-master`
+3. Install [Eclipse](https://www.eclipse.org/downloads/)
+4. `File` -> `Open Projects from File System...` 
+5. Select `APKRepatcher-master` folder and press finish.
+6. Update what you need. 
+7. Right-click on source folder (`APKRepatcher`) -> Export...
+8. Select `JAR file` and press `Next >`
+9. Deselect every file in resources to export (`.classpath`, `.gitignore`, `.project`, `LICENSE` and so on), specify export destination path with file name `APKRepatcher`, press `Next >` and in the following window `Next >` again.
+10. Check `Use existing manifest from workspace` and choose `APKRepatcher/MANIFEST.MF`. Press `Finish`
+11. Copy generated `.jar` file to main directory of `APKRepatcher` folder (NOT `APKRepatcher-master`) containing `APKRepatcher_lib` (must contain all libs), `Projects` folders and `Settings.txt`. Or replace existing `APKRepatcher.jar` file in unpacked `APKRepatcher V1.1.1.rar`. 

@@ -1,5 +1,4 @@
 Manifest-Version: 1.0
-Built-By: anjain
-Build-Jdk: 1.8.0_102
+Build-Jdk-Spec: 22
 Created-By: Maven Integration for Eclipse
 

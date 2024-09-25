@@ -24,10 +24,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import org.apache.commons.io.FileUtils;
-import net.lingala.zip4j.core.ZipFile;
+import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import net.lingala.zip4j.model.ZipParameters;
-import net.lingala.zip4j.util.Zip4jConstants;
+import net.lingala.zip4j.model.enums.CompressionMethod;
+import net.lingala.zip4j.model.enums.CompressionLevel;
 
 /**
  * Contains methods used for performing conversions
@@ -92,8 +93,8 @@ public class Utility {
 			sfFile.renameTo(new File(getProjectPath() + File.separator
 					+ "META-INF" + File.separator + certificateName + ".SF"));
 			ZipParameters parameters = new ZipParameters();
-			parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
-			parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
+			parameters.setCompressionMethod(CompressionMethod.DEFLATE);
+			parameters.setCompressionLevel(CompressionLevel.NORMAL);
 			zipFile.addFolder(newCertFolder, parameters);
 
 		} catch (ZipException e) {
@@ -153,8 +154,8 @@ public class Utility {
 			List<String> classDex = getClassDexFiles(Utility.getApkSource());
 			ZipParameters parameters = new ZipParameters();
 			parameters.setIncludeRootFolder(false);
-			parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
-			parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
+			parameters.setCompressionMethod(CompressionMethod.DEFLATE);
+			parameters.setCompressionLevel(CompressionLevel.NORMAL);
 			for (String s : classDex) {
 				zipFile.removeFile(s);
 				zipFile.addFile(new File(Utility.getModifiedDex()
