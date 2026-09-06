@@ -19,4 +19,4 @@ https://cooltrickshome.blogspot.in/2017/03/apkrepatcher-now-decompile-recompile.
 8. Select `JAR file` and press `Next >`
 9. Deselect every file in resources to export (`.classpath`, `.gitignore`, `.project`, `LICENSE` and so on), specify export destination path with file name `APKRepatcher`, press `Next >` and in the following window `Next >` again.
 10. Check `Use existing manifest from workspace` and choose `APKRepatcher/MANIFEST.MF`. Press `Finish`
-11. Copy generated `.jar` file to main directory of `APKRepatcher` folder (NOT `APKRepatcher-master`) containing `APKRepatcher_lib` (must contain all libs), `Projects` folders and `Settings.txt`. Or replace existing `APKRepatcher.jar` file in unpacked `APKRepatcher V1.1.1.rar`. 
+11. Copy generated `.jar` file to main directory of `APKRepatcher` folder (NOT `APKRepatcher-master`) containing `APKRepatcher_lib` (must contain all libs), `Projects` folders and `Settings.txt`. Or replace existing `APKRepatcher.jar` file in unpacked `APKRepatcher V1.x.x.rar`. 
